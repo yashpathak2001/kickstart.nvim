@@ -10,6 +10,7 @@
 |-----|--------|
 | `<leader>e` | Toggle **file explorer** (neo-tree) on the left |
 | `<leader>E` | Focus file explorer |
+| `<leader>eP` | **Pin** file tree open (show and keep visible) |
 | `<leader>sf` | Search **files** (Telescope) |
 | `<leader>s.` | Search **recent files** |
 | `<leader><leader>` | Find **open buffers** |
@@ -173,15 +174,64 @@
 
 ---
 
-## Windows & UI
+## Tabs
 
 | Key | Action |
 |-----|--------|
-| `Ctrl+h` | Focus **left** window |
-| `Ctrl+j` | Focus **down** window |
-| `Ctrl+k` | Focus **up** window |
-| `Ctrl+l` | Focus **right** window |
-| `Esc` | Clear search highlight / cancel |
+| `<leader>tn` | **New** tab |
+| `<leader>tc` | **Close** current tab |
+| `<leader>to` | **Only** this tab (close others) |
+| `Tab` | **Next** tab |
+| `Shift+Tab` | **Previous** tab |
+| `<leader>1` … `<leader>5` | Go to **tab 1–5** |
+| `<leader>0` | Go to **last** tab |
+
+**Open a file in a new tab:** `:tabedit path/to/file` or `:tabe path/to/file`. From file tree (neo-tree): open the file, then drag it to the tab bar, or use `:tabe %` to duplicate current file in a new tab.
+
+---
+
+## Windows & UI
+
+### Focus between panes (move cursor to another split)
+
+| Key | Action |
+|-----|--------|
+| **`Ctrl+h`** | Focus **left** pane |
+| **`Ctrl+j`** | Focus **down** pane |
+| **`Ctrl+k`** | Focus **up** pane |
+| **`Ctrl+l`** | Focus **right** pane |
+
+### Resize panes
+
+| Key | Action |
+|-----|--------|
+| **`<leader>+`** | Resize **wider** (focus the pane first, then Space then +) |
+| **`<leader>-`** | Resize **narrower** (Space then -) |
+| `<leader>w=` | **Equal** size all splits |
+
+**Built-in:** Focus a pane, then `Ctrl+w` then `+` / `-` (height) or `>` / `<` (width). E.g. `Ctrl+w` `+` makes the current pane taller. — `Esc` clears search highlight.
+
+### Quit Neovim entirely (close everything)
+
+| Key | Action |
+|-----|--------|
+| **`<leader>qq`** | **Quit all** and exit (prompts if unsaved) |
+| **`<leader>qQ`** | Quit all, **discard** unsaved and exit |
+| **`<leader>qw`** | **Save all**, then quit all and exit |
+
+Or type: `:qa` (quit all), `:qa!` (quit all discard), `:wqa` (save all and quit).
+
+---
+
+## Default panel sizes (change in config)
+
+| Panel | File | Option |
+|-------|------|--------|
+| File tree (neo-tree) | `lua/plugins/neo-tree.lua` | `window.width = 35` |
+| Terminal horizontal | `lua/plugins/toggleterm.lua` | `size=15` in keymap |
+| Terminal vertical | `lua/plugins/toggleterm.lua` | `size=60` in keymap |
+| Outline (aerial) | `lua/plugins/aerial.lua` | `layout.min_width = 28` |
+| Copilot Chat | `lua/plugins/copilot.lua` | `window.width = 0.5` |
 
 ---
 
@@ -202,7 +252,10 @@
 | Key | Action |
 |-----|--------|
 | `<Space>` | Toggle expand/collapse |
-| `Enter` / `l` | Open |
+| `Enter` / `l` | Open (current window) |
+| **`t`** | **Open in new tab** |
+| `S` | Open in horizontal split |
+| `s` | Open in vertical split |
 | `h` | Close node / go up |
 | `a` | Add file/dir |
 | `d` | Delete |

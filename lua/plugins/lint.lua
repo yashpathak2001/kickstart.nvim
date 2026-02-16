@@ -12,6 +12,10 @@ return {
         typescriptreact = { 'eslint_d' },
         json = { 'jsonlint' },
         jsonc = { 'jsonlint' },
+        -- Override nvim-lint defaults that use 'vale' (fails if vale not installed)
+        text = {},
+        markdown = {},
+        rst = {},
       },
     },
     config = function(_, opts)
