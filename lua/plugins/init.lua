@@ -37,6 +37,8 @@ local plugin_modules = {
   'aerial',       -- outline / symbols sidebar
   'lint',         -- nvim-lint (ruff, eslint, etc.)
   'dap',          -- debugger (Python, C/C++, C#, Java)
+  'spotify',      -- Spotify control + song info (macOS)
+  'trouble',      -- diagnostics/errors/warnings pane
 }
 
 local plugins = {}

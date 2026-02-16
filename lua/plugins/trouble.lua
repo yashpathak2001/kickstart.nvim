@@ -1,0 +1,42 @@
+--[[ Trouble.nvim: diagnostics/errors/warnings pane (LSP + linter). ]]
+return {
+  {
+    'folke/trouble.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    cmd = 'TroubleToggle',
+    keys = {
+      { '<leader>xx', '<cmd>TroubleToggle document_diagnostics<cr>', desc = '[X] [X] Document diagnostics' },
+      { '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>', desc = '[X] [W]orkspace diagnostics' },
+      { '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', desc = '[X] [Q]uickfix list' },
+      { '<leader>xL', '<cmd>TroubleToggle loclist<cr>', desc = '[X] [L]oclist' },
+      { '<leader>xr', '<cmd>TroubleToggle lsp_references<cr>', desc = '[X] [R]eferences' },
+    },
+    opts = {
+      mode = 'document_diagnostics',
+      auto_open = false,
+      auto_close = false,
+      auto_preview = true,
+      use_diagnostic_signs = true,
+      action_keys = {
+        close = { 'q', '<esc>' },
+        cancel = '<c-e>',
+        refresh = 'r',
+        jump = { '<cr>', '<tab>' },
+        open_split = { '<c-x>' },
+        open_vsplit = { '<c-v>' },
+        open_tab = { '<c-t>' },
+        jump_close = {'o'},
+        toggle_mode = 'm',
+        switch_severity = 's',
+        toggle_preview = 'P',
+        hover = 'K',
+        preview = 'p',
+        close_folds = {'zM', 'zm'},
+        open_folds = {'zR', 'zr'},
+        toggle_fold = {'zA', 'za'},
+        previous = 'k',
+        next = 'j',
+      },
+    },
+  },
+}

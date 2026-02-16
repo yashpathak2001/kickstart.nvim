@@ -122,6 +122,38 @@
 
 ---
 
+## Diagnostics / Errors & Warnings Pane (Trouble)
+
+| Key | Action |
+|-----|--------|
+| `<leader>xx` | Toggle **document diagnostics** (current buffer) |
+| `<leader>xw` | Toggle **workspace diagnostics** |
+| `<leader>xq` | Toggle **quickfix** list |
+| `<leader>xL` | Toggle **loclist** |
+| `<leader>xr` | Toggle **LSP references** |
+
+*In the Trouble pane: Enter/Tab to jump, q/Esc to close, j/k to move.*
+
+---
+
+## Spotify (macOS only)
+
+| Key | Action |
+|-----|--------|
+| `<leader>mp` | **Play / Pause** |
+| `<leader>mn` | **Next** track |
+| `<leader>mb` | **Previous** track |
+| `<leader>mi` | **Show current song** (info) |
+| `<leader>m+` | Volume **up** |
+| `<leader>m-` | Volume **down** |
+| `<leader>ms` | Toggle **shuffle** |
+| `<leader>mr` | Toggle **repeat** |
+| `<leader>mm` | Toggle **mute** |
+
+*Requires Spotify app running on macOS. On Linux, use a playerctl-based plugin instead.*
+
+---
+
 ## Debugger (DAP)
 
 | Key | Action |

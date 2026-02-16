@@ -24,6 +24,8 @@
       - aerial.lua     → Outline / symbols sidebar
       - lint.lua       → Linters (ruff, eslint, jsonlint)
       - dap.lua        → Debugger (Python, C/C++, C#, Java)
+      - spotify.lua    → Spotify control + song info (macOS)
+      - trouble.lua    → Diagnostics/errors/warnings pane
   Keybinds: see KEYBINDS.md in this directory.
   Add new plugins: create lua/plugins/foo.lua (return {...}) and add 'foo' in lua/plugins/init.lua.
 ]]

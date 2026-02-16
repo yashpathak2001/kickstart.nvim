@@ -76,7 +76,7 @@ return {
         'clangd',
         'qmlls',
         'jdtls',
-        'omnisharp_mono',
+        'omnisharp',
         'json-lsp',
         'lemminx',
         'lua-language-server',
