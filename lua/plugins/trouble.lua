@@ -3,20 +3,16 @@ return {
   {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    cmd = 'TroubleToggle',
+    cmd = 'Trouble',
     keys = {
-      { '<leader>xx', '<cmd>TroubleToggle document_diagnostics<cr>', desc = '[X] [X] Document diagnostics' },
-      { '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>', desc = '[X] [W]orkspace diagnostics' },
-      { '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', desc = '[X] [Q]uickfix list' },
-      { '<leader>xL', '<cmd>TroubleToggle loclist<cr>', desc = '[X] [L]oclist' },
-      { '<leader>xr', '<cmd>TroubleToggle lsp_references<cr>', desc = '[X] [R]eferences' },
+      { '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Diagnostics (Trouble)' },
+      { '<leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Buffer Diagnostics (Trouble)' },
+      { '<leader>cs', '<cmd>Trouble symbols toggle focus=false<cr>', desc = 'Symbols (Trouble)' },
+      { '<leader>cl', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>', desc = 'LSP Definitions / references / ... (Trouble)' },
+      { '<leader>xL', '<cmd>Trouble loclist toggle<cr>', desc = 'Location List (Trouble)' },
+      { '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', desc = 'Quickfix List (Trouble)' },
     },
     opts = {
-      mode = 'document_diagnostics',
-      auto_open = false,
-      auto_close = false,
-      auto_preview = true,
-      use_diagnostic_signs = true,
       action_keys = {
         close = { 'q', '<esc>' },
         cancel = '<c-e>',
@@ -25,18 +21,16 @@ return {
         open_split = { '<c-x>' },
         open_vsplit = { '<c-v>' },
         open_tab = { '<c-t>' },
-        jump_close = {'o'},
-        toggle_mode = 'm',
-        switch_severity = 's',
-        toggle_preview = 'P',
-        hover = 'K',
-        preview = 'p',
-        close_folds = {'zM', 'zm'},
-        open_folds = {'zR', 'zr'},
-        toggle_fold = {'zA', 'za'},
+        jump_close = 'o',
         previous = 'k',
         next = 'j',
       },
     },
+    config = function(_, opts)
+      require('trouble').setup(opts)
+      -- Match Trouble window background to editor (transparent or same as Normal)
+      vim.api.nvim_set_hl(0, 'TroubleNormal', { link = 'Normal' })
+      vim.api.nvim_set_hl(0, 'TroubleNormalNC', { link = 'Normal' })
+    end,
   },
 }

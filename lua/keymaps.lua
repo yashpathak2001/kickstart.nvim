@@ -35,6 +35,15 @@ vim.keymap.set('n', '<leader>+', '<cmd>vertical resize +5<cr>', { desc = 'Resize
 vim.keymap.set('n', '<leader>-', '<cmd>vertical resize -5<cr>', { desc = 'Resize narrower (-)' })
 vim.keymap.set('n', '<leader>w=', '<cmd>wincmd =<cr>', { desc = '[W]indow equal size' })
 
+-- Move current pane to a new position (change pane layout)
+vim.keymap.set('n', '<leader>wH', '<C-w>H', { desc = '[W]indow move to far [H]eft' })
+vim.keymap.set('n', '<leader>wJ', '<C-w>J', { desc = '[W]indow move to far [J] (bottom)' })
+vim.keymap.set('n', '<leader>wK', '<C-w>K', { desc = '[W]indow move to far [K] (top)' })
+vim.keymap.set('n', '<leader>wL', '<C-w>L', { desc = '[W]indow move to far [L] (right)' })
+vim.keymap.set('n', '<leader>wr', '<C-w>r', { desc = '[W]indow [R]otate (swap with next)' })
+vim.keymap.set('n', '<leader>wR', '<C-w>R', { desc = '[W]indow rotate backwards' })
+vim.keymap.set('n', '<leader>wx', '<C-w>x', { desc = '[W]indow e[X]change (swap with next)' })
+
 -- Tab: open, close, navigate
 vim.keymap.set('n', '<leader>tn', '<cmd>tabnew<cr>', { desc = '[T]ab [N]ew' })
 vim.keymap.set('n', '<leader>tc', '<cmd>tabclose<cr>', { desc = '[T]ab [C]lose' })

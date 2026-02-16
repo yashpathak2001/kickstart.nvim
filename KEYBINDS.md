@@ -127,11 +127,12 @@
 
 | Key | Action |
 |-----|--------|
-| `<leader>xx` | Toggle **document diagnostics** (current buffer) |
-| `<leader>xw` | Toggle **workspace diagnostics** |
-| `<leader>xq` | Toggle **quickfix** list |
+| `<leader>xx` | Toggle **diagnostics** (all) |
+| `<leader>xX` | Toggle **buffer diagnostics** (current buffer only) |
+| `<leader>cs` | Toggle **symbols** (document symbols) |
+| `<leader>cl` | Toggle **LSP** (definitions, references, implementations, …) |
 | `<leader>xL` | Toggle **loclist** |
-| `<leader>xr` | Toggle **LSP references** |
+| `<leader>xQ` | Toggle **quickfix** list |
 
 *In the Trouble pane: Enter/Tab to jump, q/Esc to close, j/k to move.*
 
@@ -209,7 +210,21 @@
 | **`<leader>-`** | Resize **narrower** (Space then -) |
 | `<leader>w=` | **Equal** size all splits |
 
-**Built-in:** Focus a pane, then `Ctrl+w` then `+` / `-` (height) or `>` / `<` (width). E.g. `Ctrl+w` `+` makes the current pane taller. — `Esc` clears search highlight.
+### Change pane positions (move window)
+
+| Key | Action |
+|-----|--------|
+| **`<leader>wH`** | Move **current pane** to far **left** (full height) |
+| **`<leader>wJ`** | Move current pane to far **bottom** (full width) |
+| **`<leader>wK`** | Move current pane to far **top** (full width) |
+| **`<leader>wL`** | Move current pane to far **right** (full height) |
+| **`<leader>wr`** | **Rotate** windows (current swaps with next) |
+| **`<leader>wR`** | Rotate windows **backwards** |
+| **`<leader>wx`** | **Exchange** current window with next |
+
+*Focus the pane you want to move, then use the key above. Built-in: `Ctrl+w` then `H` / `J` / `K` / `L` does the same move.*
+
+**Built-in:** Focus a pane, then `Ctrl+w` then `+` / `-` (height) or `>` / `<` (width). — `Esc` clears search highlight.
 
 ### Quit Neovim entirely (close everything)
 

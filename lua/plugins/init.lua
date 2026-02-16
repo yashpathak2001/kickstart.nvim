@@ -26,7 +26,8 @@ local plugin_modules = {
   'blink-cmp',    -- completion
   'colorscheme',  -- tokyonight
   'todo-comments',
-  'mini',         -- ai, surround, statusline
+  'mini',         -- ai, surround (statusline replaced by lualine)
+  'lualine',      -- statusline
   'treesitter',
   -- IDE-style
   'neo-tree',     -- file explorer (left sidebar)
