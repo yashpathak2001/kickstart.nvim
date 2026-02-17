@@ -30,6 +30,8 @@ return {
       })
       vim.api.nvim_create_autocmd('BufEnter', {
         callback = function()
+          -- Only run on normal file buffers (skip popups like neo-tree paste input to avoid E36)
+          if vim.bo.buftype ~= '' then return end
           vim.defer_fn(run_lint, 50)
         end,
       })

@@ -27,8 +27,10 @@ local plugin_modules = {
   'colorscheme',  -- tokyonight
   'todo-comments',
   'mini',         -- ai, surround (statusline replaced by lualine)
-  'lualine',      -- statusline
+  'lualine',      -- statusline (+ current music right)
   'bufferline',   -- file tabs at top (VS Code style)
+  'dropbar',      -- breadcrumb at top of buffer
+  'noice',        -- animated cmdline, messages, notify toasts
   'treesitter',
   -- IDE-style
   'neo-tree',     -- file explorer (left sidebar)

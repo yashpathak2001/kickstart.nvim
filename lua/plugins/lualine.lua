@@ -1,10 +1,11 @@
---[[ Lualine: statusline per window, git branch/diff + lines added/removed, Trouble symbols. ]]
+--[[ Lualine: statusline per window, git branch/diff, Trouble symbols, current music (right). ]]
 return {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
       'folke/trouble.nvim',
+      'spinalshock/spotify.nvim',  -- optional: current track in statusline
     },
     opts = function(_, _opts)
       local trouble = require('trouble')
@@ -72,7 +73,14 @@ return {
           },
           lualine_x = { 'encoding', 'fileformat', 'filetype' },
           lualine_y = { 'progress' },
-          lualine_z = { 'location' },
+          lualine_z = (function()
+            -- Current music on the right (Spotify on macOS via spotify.nvim)
+            local ok, spotify = pcall(require, 'spotify.commands')
+            if ok and spotify and spotify.statusline then
+              return { spotify.statusline, 'location' }
+            end
+            return { 'location' }
+          end)(),
         },
         inactive_sections = {
           lualine_a = {},

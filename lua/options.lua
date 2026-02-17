@@ -35,6 +35,15 @@ vim.o.timeoutlen = 300
 vim.o.splitright = true
 vim.o.splitbelow = true
 
+-- Tab line (buffer tabs at top): always visible so new files show in the bar immediately
+vim.opt.showtabline = 2
+
+-- Reserve one line for messages to avoid E36 "Not enough room" when plugins echo/notify on FileType
+vim.opt.cmdheight = 1
+-- Allow small popups (e.g. neo-tree paste input) to open without E36
+vim.opt.winminheight = 1
+vim.opt.winminwidth = 1
+
 -- Whitespace display (listchars)
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }

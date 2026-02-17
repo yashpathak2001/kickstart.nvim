@@ -24,6 +24,9 @@
 | `<leader>E` | Focus file explorer |
 | `<leader>eP` | **Pin** file tree open (show and keep visible) |
 | `<leader>sf` | Search **files** (Telescope) |
+
+**In file tree (neo-tree):** `y` = copy to clipboard, `p` = paste (prompts for path — use a new name to **duplicate** in same folder). `c` = copy with destination path. `x` = cut, `r` = rename, `a` = add file/folder, `d` = delete.
+
 | `<leader>s.` | Search **recent files** |
 | `<leader><leader>` | Find **open buffers** |
 | `<leader>sn` | Search **Neovim config** files |
@@ -131,6 +134,28 @@
 
 ---
 
+## Dropbar (breadcrumb at top)
+
+| Key | Action |
+|-----|--------|
+| `<leader>;` | **Pick** symbol in winbar (jump to context) |
+| `[;` | Go to **start** of current context |
+| `];` | **Next** context |
+
+*Click winbar components to open dropdowns; LSP/treesitter provide symbol context.*
+
+---
+
+## UI: Notifications & Animations
+
+| Key | Action |
+|-----|--------|
+| `<leader>un` | **Dismiss** all notifications |
+
+*Noice.nvim*: animated cmdline and message popups. *nvim-notify*: toast-style notifications. *mini.animate*: smooth cursor, scroll, resize, and window open/close.
+
+---
+
 ## Git
 
 | Key | Action |
@@ -148,7 +173,7 @@
 
 ---
 
-## Terminal
+## Terminal & Run
 
 | Key | Action |
 |-----|--------|
@@ -156,6 +181,7 @@
 | `<leader>tH` | Terminal **horizontal** split |
 | `<leader>tv` | Terminal **vertical** split |
 | `Ctrl+\` | Toggle terminal (float) |
+| **`<leader>rr`** | **Run current file** (Python, Lua, Node, TS, Go, Rust, Ruby, shell) in floating terminal |
 | `Esc Esc` (in terminal) | **Exit** terminal mode |
 
 ---
@@ -192,6 +218,8 @@
 ---
 
 ## Spotify (macOS only)
+
+**Current track** is shown on the **right side of the statusline** (when Spotify is running).
 
 | Key | Action |
 |-----|--------|

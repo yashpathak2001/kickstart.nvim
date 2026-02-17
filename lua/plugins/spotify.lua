@@ -1,4 +1,9 @@
---[[ Spotify: control and display current song. macOS only (uses AppleScript). ]]
+--[[ Spotify: control and display current song. macOS only (uses AppleScript).
+  The plugin looks for scripts under config/lua/plugins/spotify.nvim/...; with lazy.nvim
+  they live in data/lazy/spotify.nvim. A symlink at lua/plugins/spotify.nvim/lua/spotify/scripts
+  -> ~/.local/share/nvim/lazy/spotify.nvim/lua/spotify/scripts fixes this. Recreate after fresh clone:
+  mkdir -p lua/plugins/spotify.nvim/lua/spotify && ln -sfn ~/.local/share/nvim/lazy/spotify.nvim/lua/spotify/scripts lua/plugins/spotify.nvim/lua/spotify/scripts
+]]
 return {
   {
     'spinalshock/spotify.nvim',
