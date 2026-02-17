@@ -46,16 +46,23 @@ return {
               Normal = { bg = 'NONE' },
               NormalNC = { bg = 'NONE' },
               SignColumn = { bg = 'NONE' },
-              EndOfBuffer = { bg = 'NONE' },
-              LineNr = { bg = 'NONE' },
-              CursorLineNr = { bg = 'NONE' },
-              Folded = { bg = 'NONE' },
-              VertSplit = { bg = 'NONE' },
+              -- Tildes (~) and empty lines: bright gray
+              EndOfBuffer = { bg = 'NONE', fg = cp.overlay1 },
+              NonText = { bg = 'NONE', fg = cp.overlay1 },
+              -- Line numbers: bright, current line even brighter
+              LineNr = { bg = 'NONE', fg = cp.overlay1 },
+              CursorLineNr = { bg = 'NONE', fg = cp.text },
+              Folded = { bg = 'NONE', fg = cp.overlay1 },
+              -- Pane dividers: bright so splits are clear
+              VertSplit = { bg = 'NONE', fg = cp.overlay2 },
+              WinSeparator = { bg = 'NONE', fg = cp.overlay2 },
+              -- Neo-tree: "(X hidden items)" and other dim text
+              NeoTreeMessage = { bg = 'NONE', fg = cp.overlay2 },
+              NeoTreeDimText = { bg = 'NONE', fg = cp.overlay2 },
               StatusLine = { bg = 'NONE' },
               StatusLineNC = { bg = 'NONE' },
               TabLine = { bg = 'NONE' },
               TabLineFill = { bg = 'NONE' },
-              WinSeparator = { bg = 'NONE' },
               -- Floats/popups: very dark so they stay readable over transparent area
               NormalFloat = { bg = cp.mantle },
               FloatBorder = { bg = cp.mantle },

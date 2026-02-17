@@ -28,6 +28,7 @@ local plugin_modules = {
   'todo-comments',
   'mini',         -- ai, surround (statusline replaced by lualine)
   'lualine',      -- statusline
+  'bufferline',   -- file tabs at top (VS Code style)
   'treesitter',
   -- IDE-style
   'neo-tree',     -- file explorer (left sidebar)
@@ -35,6 +36,7 @@ local plugin_modules = {
   'diffview',     -- git diffs & file history
   'toggleterm',   -- terminal
   'copilot',      -- GitHub Copilot completion + chat
+  '99',           -- ThePrimeagen/99 AI agent (cursor-agent backend)
   'aerial',       -- outline / symbols sidebar
   'lint',         -- nvim-lint (ruff, eslint, etc.)
   'dap',          -- debugger (Python, C/C++, C#, Java)

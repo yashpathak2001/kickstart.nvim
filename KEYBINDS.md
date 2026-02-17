@@ -4,6 +4,18 @@
 
 ---
 
+## Insert & Normal (fast)
+
+| Key | Action |
+|-----|--------|
+| `jk` or `kj` (insert) | **Exit insert** (faster than Esc) |
+| `Esc` (insert) | Exit insert and clear search highlight |
+| `;;` (normal) | **Enter insert** at cursor |
+| `''` (normal) | Enter insert **after** cursor |
+| `<leader>Lc` | **Lazy clean** (remove unused/disabled plugins) |
+
+---
+
 ## File & Explorer
 
 | Key | Action |
@@ -55,19 +67,56 @@
 
 ## Completions & AI (Copilot)
 
+**Official** (github/copilot.vim) only; copilot.lua is disabled.
+
 | Key | Action |
 |-----|--------|
-| `Ctrl+J` (insert) | **Accept** Copilot suggestion |
-| `Ctrl+]` (insert) | **Dismiss** Copilot suggestion |
-| `Ctrl+\` (insert) | **Trigger** Copilot suggestion |
+| `Alt+J` (insert) | **Accept** suggestion |
+| `Alt+]` (insert) | **Dismiss** suggestion |
+| `Alt+\` (insert) | **Suggest** |
+| **Copilot Chat** | |
 | `<leader>cc` | Toggle **Copilot Chat** panel |
 | `<leader>ce` | Copilot **Explain** (selection or code under cursor) |
 | `<leader>cF` | Copilot **Fix** |
 | `<leader>cR` | Copilot **Refactor** |
-| `<leader>cG` | Copilot **Generate** (code) |
+| `<leader>cG` | Copilot **Generate** — type an instruction, get code at cursor (then accept diff in chat) |
+| `<leader>ci` | **Inline** — open chat with “add a function that …” prefilled (finish the sentence, submit, accept diff) |
+| `<leader>cn` | **New** buffer (then use chat to generate and accept diff) |
 | `Ctrl+S` (in chat) | **Submit** message in Copilot Chat |
 
-*First time: run `:Copilot auth` to sign in to GitHub Copilot.*
+*Run `:Copilot auth` to sign in. Use **`<leader>Lc`** once to run Lazy clean and remove the disabled copilot.lua plugin.*
+
+---
+
+## 99 (AI agent — cursor-agent)
+
+[ThePrimeagen/99](https://github.com/ThePrimeagen/99): AI agent with **Cursor** backend. Requires `cursor-agent` CLI. In the prompt buffer use **`#`** for rules and **`@`** for file completion.
+
+| Key | Action |
+|-----|--------|
+| `<leader>9v` (visual) | **Visual** — send selection + prompt |
+| `<leader>99` | **Search** — open prompt (no selection) |
+| `<leader>9s` | **Stop** all in-flight requests |
+| `<leader>9l` | **Logs** — view last run |
+| `<leader>9[` | **Prev** log |
+| `<leader>9]` | **Next** log |
+| `<leader>9i` | **Info** (rules, request count) |
+| `<leader>9q` | **Quickfix** — request history |
+| `<leader>9c` | **Clear** previous requests |
+| `<leader>9m` | Clear **marks** |
+
+*Model: provider default (sonnet-4.5). Completion in prompt: `source = "blink"`.*
+
+### Inline: “write a function here” from an instruction
+
+- **Generate at cursor:** Put the cursor where the function should go → **`<leader>cG`** → type your instruction (e.g. *“a function that converts Celsius to Fahrenheit”*) → **Ctrl+S** → in the chat window, **accept the diff** to insert the code into the file.
+- **Chat with prefilled prompt:** **`<leader>ci`** opens Copilot Chat with *“#buffer At the cursor, add a function that ”* — finish the sentence, submit (**Ctrl+S**), then accept the diff to insert in the file.
+
+### Create or edit files (Cursor-style)
+
+1. **New file from scratch:** `<leader>cn` to open an empty buffer, then `<leader>cc` to open Copilot Chat. Type `@copilot` and ask e.g. *"Create a Python script that does X"*. When the model suggests an **edit** (create file), approve it to create/write the file.
+2. **Apply code from chat:** In Copilot Chat, when the assistant shows a code block, use **`gd`** (in chat window) to show the diff, then **accept** the diff (see chat help with **`gh`**) to apply it to your buffer. **`gy`** yanks the nearest diff so you can paste elsewhere.
+3. **Let the AI edit files:** In chat, type **`@copilot`** so the model can use tools (e.g. `edit` to create/change files). Ask e.g. *"Create src/foo.py with a hello function"* and approve the tool call when prompted.
 
 ---
 
@@ -175,19 +224,35 @@
 
 ---
 
-## Tabs
+## File tabs (buffers) – VS Code style
+
+The **top bar** shows one tab per open file. Switch between open files with:
 
 | Key | Action |
 |-----|--------|
-| `<leader>tn` | **New** tab |
-| `<leader>tc` | **Close** current tab |
-| `<leader>to` | **Only** this tab (close others) |
-| `Tab` | **Next** tab |
-| `Shift+Tab` | **Previous** tab |
-| `<leader>1` … `<leader>5` | Go to **tab 1–5** |
-| `<leader>0` | Go to **last** tab |
+| **`Ctrl+Tab`** | **Next** file (buffer) |
+| **`Ctrl+Shift+Tab`** | **Previous** file (buffer) |
+| `<leader>bn` | [B]uffer [N]ext |
+| `<leader>bp` | [B]uffer [P]revious |
+| `<leader>bc` | [B]uffer [C]lose current |
+| `<leader>bC` | Close all **other** buffers |
+| `<leader>b1` … `<leader>b5` | Go to **buffer 1–5** |
 
-**Open a file in a new tab:** `:tabedit path/to/file` or `:tabe path/to/file`. From file tree (neo-tree): open the file, then drag it to the tab bar, or use `:tabe %` to duplicate current file in a new tab.
+You can also **click** a tab in the top bar to switch to that file. Right-click a tab to close it.
+
+---
+
+## Tab pages (workspace tabs)
+
+| Key | Action |
+|-----|--------|
+| `<leader>tn` | **New** tab page |
+| `<leader>tc` | **Close** current tab page |
+| `<leader>to` | **Only** this tab page (close others) |
+| `Tab` | **Next** tab page |
+| `Shift+Tab` | **Previous** tab page |
+| `<leader>1` … `<leader>5` | Go to **tab page 1–5** |
+| `<leader>0` | Go to **last** tab page |
 
 ---
 

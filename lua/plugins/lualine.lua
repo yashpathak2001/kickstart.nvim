@@ -82,14 +82,8 @@ return {
           lualine_y = {},
           lualine_z = {},
         },
-        tabline = {
-          lualine_a = { 'buffers' },
-          lualine_b = {},
-          lualine_c = {},
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = { 'tabs' },
-        },
+        -- Tabline disabled: bufferline.nvim shows file tabs at top instead
+        tabline = {},
         winbar = {},
         inactive_winbar = {},
         extensions = {},

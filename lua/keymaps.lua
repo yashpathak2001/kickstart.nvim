@@ -4,8 +4,20 @@
   See :help vim.keymap.set()
 ]]
 
--- Clear search highlight on Esc
+-- Insert mode: fast exit (jk/kj) and ensure Esc leaves insert
+vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert' })
+vim.keymap.set('i', 'kj', '<Esc>', { desc = 'Exit insert' })
+vim.keymap.set('i', '<Esc>', '<Esc><cmd>nohlsearch<CR>', { desc = 'Exit insert and clear search' })
+
+-- Normal mode: fast enter insert (;; = i, so you don’t reach for i)
+vim.keymap.set('n', ';;', 'i', { desc = 'Enter insert' })
+vim.keymap.set('n', "''", 'a', { desc = 'Enter insert after cursor' })
+
+-- Clear search highlight on Esc (normal mode)
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- Lazy: clean unused plugins (run after disabling a plugin to remove it)
+vim.keymap.set('n', '<leader>Lc', '<cmd>Lazy clean<cr>', { desc = '[L]azy [c]lean (remove unused plugins)' })
 
 -- Quit Neovim entirely (all tabs/buffers)
 vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = '[Q]uit all (exit nvim)' })
