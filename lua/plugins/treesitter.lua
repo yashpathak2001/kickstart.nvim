@@ -1,19 +1,19 @@
---[[ Treesitter: syntax and parsing. Installed filetypes listed here. ]]
+--[[ Treesitter: syntax highlighting and parsing (function names, etc.). ]]
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    config = function()
-      local filetypes = {
-        'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline',
-        'query', 'vim', 'vimdoc',
-      }
-      require('nvim-treesitter').install(filetypes)
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = filetypes,
-        callback = function()
-          vim.treesitter.start()
-        end,
-      })
+    lazy = false,
+    build = ':TSUpdate',
+    opts = {
+      ensure_installed = {
+        'bash', 'c', 'cpp', 'css', 'diff', 'html', 'javascript', 'json', 'lua', 'luadoc',
+        'markdown', 'markdown_inline', 'python', 'query', 'tsx', 'typescript', 'vim', 'vimdoc',
+      },
+      highlight = { enable = true },
+      indent = { enable = true },
+    },
+    config = function(_, opts)
+      require('nvim-treesitter').setup(opts)
     end,
   },
 }

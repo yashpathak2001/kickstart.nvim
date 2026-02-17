@@ -7,7 +7,22 @@ return {
     keys = {
       { '<leader>bp', '<cmd>BufferLineCyclePrev<cr>', desc = '[B]uffer [P]revious' },
       { '<leader>bn', '<cmd>BufferLineCycleNext<cr>', desc = '[B]uffer [N]ext' },
-      { '<leader>bc', '<cmd>bdelete<cr>', desc = '[B]uffer [C]lose' },
+      {
+        '<leader>bc',
+        function()
+          local buflist = vim.tbl_filter(function(b)
+            return vim.bo[b].buflisted and vim.bo[b].buftype == ''
+          end, vim.api.nvim_list_bufs())
+          if #buflist <= 1 then
+            vim.cmd('enew')
+            vim.cmd('bdelete #')
+          else
+            vim.cmd('BufferLineCycleNext')
+            vim.cmd('bdelete #')
+          end
+        end,
+        desc = '[B]uffer [C]lose (keep window open)',
+      },
       { '<leader>bC', '<cmd>BufferLineCloseOthers<cr>', desc = '[B]uffer close [C]others' },
       { '<leader>b1', '<cmd>BufferLineGoToBuffer 1<cr>', desc = 'Go to buffer 1' },
       { '<leader>b2', '<cmd>BufferLineGoToBuffer 2<cr>', desc = 'Go to buffer 2' },

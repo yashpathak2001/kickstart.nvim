@@ -51,11 +51,12 @@
 
 | Key | Action |
 |-----|--------|
-| `grd` | Go to **definition** |
+| `grd` | Go to **definition** (Telescope picker) |
 | `grr` | Go to **references** |
 | `gri` | Go to **implementation** |
 | `grt` | Go to **type definition** |
-| `grD` | Go to **declaration** |
+| `grD` | Go to **declaration** (direct jump) |
+| `K` | **Hover** — definition/signature in popup (cursor on symbol) |
 | `gO` | **Document symbols** (current file) |
 | `gW` | **Workspace symbols** |
 | `grn` | **Rename** symbol |
@@ -169,6 +170,9 @@
 | `<leader>u` | Toggle **undo tree** (undotree) |
 | `<leader>f` | **Format** buffer (Conform) |
 | `<leader>xl` | Run **linter** (nvim-lint) |
+
+**Auto format:** Conform formats on save (when a formatter is configured for the file type).  
+**Linting:** Runs on save and when entering a buffer. Install linters via **`:Mason`** (e.g. ruff, eslint_d, jsonlint).
 
 ---
 

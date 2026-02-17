@@ -1,8 +1,8 @@
---[[ Linters: ruff (Python), eslint (JS/TS), etc. See :help nvim-lint. ]]
+--[[ Linters: ruff (Python), eslint_d (JS/TS), jsonlint. Install via :Mason. ]]
 return {
   {
     'mfussenegger/nvim-lint',
-    event = { 'BufWritePost', 'BufReadPost' },
+    event = { 'BufReadPost', 'BufWritePost', 'BufEnter' },
     opts = {
       linters_by_ft = {
         python = { 'ruff' },
@@ -12,7 +12,6 @@ return {
         typescriptreact = { 'eslint_d' },
         json = { 'jsonlint' },
         jsonc = { 'jsonlint' },
-        -- Override nvim-lint defaults that use 'vale' (fails if vale not installed)
         text = {},
         markdown = {},
         rst = {},
@@ -23,12 +22,18 @@ return {
       for ft, linters in pairs(opts.linters_by_ft or {}) do
         lint.linters_by_ft[ft] = linters
       end
+      local run_lint = function()
+        lint.try_lint()
+      end
       vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufReadPost' }, {
+        callback = run_lint,
+      })
+      vim.api.nvim_create_autocmd('BufEnter', {
         callback = function()
-          lint.try_lint()
+          vim.defer_fn(run_lint, 50)
         end,
       })
-      vim.keymap.set('n', '<leader>xl', function() lint.try_lint() end, { desc = '[L]int' })
+      vim.keymap.set('n', '<leader>xl', run_lint, { desc = '[L]int (run linters)' })
     end,
   },
 }

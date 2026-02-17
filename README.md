@@ -41,6 +41,30 @@ External Requirements:
   - If you want to write Golang, you will need `go`
   - etc.
 
+#### macOS (Homebrew)
+
+For this config, install the following so plugins build and features work:
+
+```bash
+brew install neovim git ripgrep fd node
+```
+
+| Package   | Used for |
+|----------|----------|
+| **neovim** | Editor (or use `brew install --HEAD neovim` for nightly). |
+| **git**    | Lazy.nvim, gitsigns, diffview, 99, LSP. |
+| **ripgrep** (rg) | Telescope live grep (`<leader>sg`). |
+| **fd**     | Optional; faster file finder for Telescope. |
+| **node**   | GitHub Copilot (official plugin), many Mason LSPs. Use Node 22+ if you use copilot.lua. |
+
+**Build tools** (for compiling telescope-fzf-native, treesitter parsers, LuaSnip): install Xcode Command Line Tools so `make` and `clang` are available:
+
+```bash
+xcode-select --install
+```
+
+**99 (AI agent):** the Cursor backend needs the `cursor-agent` CLI on your PATH (install separately; not in Homebrew).
+
 > [!NOTE]
 > See [Install Recipes](#Install-Recipes) for additional Windows and Linux specific notes
 > and quick install snippets

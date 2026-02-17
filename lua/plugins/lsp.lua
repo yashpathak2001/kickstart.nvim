@@ -20,6 +20,7 @@ return {
           map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
           map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('K', vim.lsp.buf.hover, 'Hover (definition/signature in popup)')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client:supports_method('textDocument/documentHighlight', event.buf) then
@@ -52,6 +53,24 @@ return {
       })
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
+      -- Enable semantic highlighting (function names, types, etc.)
+      capabilities = vim.tbl_deep_extend('force', capabilities, {
+        textDocument = {
+          semanticTokens = {
+            dynamicRegistration = false,
+            requests = { full = { delta = true } },
+            tokenTypes = {
+              'namespace', 'type', 'class', 'enum', 'interface', 'struct', 'typeParameter',
+              'parameter', 'variable', 'property', 'enumMember', 'event', 'function', 'method',
+              'macro', 'keyword', 'modifier', 'comment', 'string', 'number', 'regexp', 'operator',
+            },
+            tokenModifiers = {
+              'declaration', 'definition', 'readonly', 'static', 'deprecated', 'abstract', 'async',
+              'modification', 'documentation', 'defaultLibrary',
+            },
+          },
+        },
+      })
 
       -- LSP servers: Python, HTML, CSS, JS/TS, C/C++, QML, Java, C#, Lua, JSON, XML
       local servers = {
