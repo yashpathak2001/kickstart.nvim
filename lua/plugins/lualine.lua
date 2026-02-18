@@ -41,7 +41,10 @@ return {
           theme = 'auto',
           component_separators = { left = '\u{e0b1}', right = '\u{e0b3}' },
           section_separators = { left = '\u{e0b0}', right = '\u{e0b2}' },
-          disabled_filetypes = { statusline = {}, winbar = {} },
+          disabled_filetypes = {
+            statusline = { 'TelescopePrompt', 'telescope', 'toggleterm', 'neo-tree' },
+            winbar = {},
+          },
           ignore_focus = {},
           always_divide_middle = true,
           always_show_tabline = true,

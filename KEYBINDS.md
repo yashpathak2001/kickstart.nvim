@@ -25,7 +25,8 @@
 | `<leader>eP` | **Pin** file tree open (show and keep visible) |
 | `<leader>sf` | Search **files** (Telescope) |
 
-**In file tree (neo-tree):** `y` = copy to clipboard, `p` = paste (prompts for path — use a new name to **duplicate** in same folder). `c` = copy with destination path. `x` = cut, `r` = rename, `a` = add file/folder, `d` = delete.
+**In file tree (neo-tree):** `a` = add file, **`A`** = add **directory**. `y` = copy, `p` = paste (duplicate: paste with new name). `c` = copy to path, `x` = cut, `r` = rename, `d` = delete.  
+**Multi-select move:** `V` (or `v`) then `j`/`k` to select lines → **`x`** to cut (or **`y`** to copy) → go to destination folder → **`p`** to paste.
 
 | `<leader>s.` | Search **recent files** |
 | `<leader><leader>` | Find **open buffers** |
@@ -217,6 +218,19 @@
 
 ---
 
+## Markdown preview
+
+Opening a `.md` file **renders it in-buffer** (headings, code blocks, tables, lists styled). Use the keys below to open a read-only preview split or toggle raw/rendered.
+
+| Key | Action |
+|-----|--------|
+| `<leader>mv` | **Preview** — open rendered markdown in a side split (view only) |
+| `<leader>mt` | **Toggle** — switch current buffer between rendered and raw markdown |
+
+*Requires treesitter `markdown` and `markdown_inline` parsers (`:TSInstall markdown markdown_inline` if needed).*
+
+---
+
 ## Spotify (macOS only)
 
 **Current track** is shown on the **right side of the statusline** (when Spotify is running).
@@ -322,6 +336,19 @@ You can also **click** a tab in the top bar to switch to that file. Right-click 
 *Focus the pane you want to move, then use the key above. Built-in: `Ctrl+w` then `H` / `J` / `K` / `L` does the same move.*
 
 **Built-in:** Focus a pane, then `Ctrl+w` then `+` / `-` (height) or `>` / `<` (width). — `Esc` clears search highlight.
+
+### Workspace / Session (save & restore layout per folder)
+
+Sessions are **saved automatically** when you quit and **restored** when you open Neovim in the same folder. Layout (splits, tabs), open files, and cursor position are restored.
+
+| Key | Action |
+|-----|--------|
+| `<leader>ws` | **Save** session (current folder) |
+| `<leader>wl` | **Load** / restore session |
+| `<leader>wf` | **Find** sessions (Telescope picker) |
+| `<leader>wa` | **Toggle** auto-save on/off |
+
+*Sessions are stored per directory; opening `nvim` in a project folder restores that project’s session.*
 
 ### Quit Neovim entirely (close everything)
 

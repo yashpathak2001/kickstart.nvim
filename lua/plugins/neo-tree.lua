@@ -16,6 +16,8 @@ return {
     },
     opts = {
       close_if_last_window = false,
+      -- Use cmdline for paste/copy/rename input instead of nui popup (avoids E36 on BufWinEnter)
+      use_popups_for_input = false,
       filesystem = {
         follow_current_file = { enabled = true },
         hijack_netrw_behavior = 'open_default',
@@ -44,6 +46,7 @@ return {
           ['z'] = 'close_all_nodes',
           ['Z'] = 'expand_all_nodes',
           ['a'] = { 'add', config = { show_path = 'none' } },
+          ['A'] = 'add_directory',
           ['d'] = 'delete',
           ['r'] = 'rename',
           ['y'] = 'copy_to_clipboard',

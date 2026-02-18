@@ -38,11 +38,13 @@ vim.o.splitbelow = true
 -- Tab line (buffer tabs at top): always visible so new files show in the bar immediately
 vim.opt.showtabline = 2
 
--- Reserve one line for messages to avoid E36 "Not enough room" when plugins echo/notify on FileType
-vim.opt.cmdheight = 1
--- Allow small popups (e.g. neo-tree paste input) to open without E36
+-- Reserve message lines to avoid E36 "Not enough room" (FileType/BufEnter popups)
+vim.opt.cmdheight = 3
 vim.opt.winminheight = 1
 vim.opt.winminwidth = 1
+-- Fewer hit-enter prompts so less "room" needed for messages
+vim.opt.shortmess:append('c')
+vim.opt.shortmess:append('F')
 
 -- Whitespace display (listchars)
 vim.o.list = true
@@ -55,6 +57,9 @@ vim.o.scrolloff = 10
 
 -- Confirm instead of failing on unsaved changes
 vim.o.confirm = true
+
+-- Session: save/restore layout, buffers, tabs, window size/position (for auto-session plugin)
+vim.opt.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
 -- Diagnostics (LSP/vim.diagnostic)
 vim.diagnostic.config({

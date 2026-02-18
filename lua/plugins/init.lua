@@ -44,6 +44,8 @@ local plugin_modules = {
   'dap',          -- debugger (Python, C/C++, C#, Java)
   'spotify',      -- Spotify control + song info (macOS)
   'trouble',      -- diagnostics/errors/warnings pane
+  'session',      -- save/restore workspace layout + open files per folder
+  'markdown-preview',  -- render markdown in-buffer + preview in split
 }
 
 local plugins = {}
